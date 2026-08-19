@@ -39,9 +39,11 @@ The scan primarily targeted:
 - `192.168.1.103`
 - `192.168.1.104`
 
-Traffic involving `192.168.1.1` was also observed.
+![PCAP-PortScan-Analysis](212-filter.png)
 
 The scanning host probed **20 distinct destination ports**.
+
+![PCAP-PortScan-Analysis](ports-scanned.png)
 
 ---
 
@@ -50,14 +52,9 @@ The scanning host probed **20 distinct destination ports**.
 To identify initial TCP connection attempts, I filtered for packets where the SYN flag was set and the ACK flag was not set:
 
 ```wireshark
-tcp.flags.syn == 1 && tcp.flags.ack == 0
-```
-
-After identifying the scanning host, I further narrowed the traffic:
-
-```wireshark
 ip.src == 192.168.1.212 && tcp.flags.syn == 1 && tcp.flags.ack == 0
 ```
+)
 
 The first SYN associated with the scanning activity was:
 
@@ -66,6 +63,11 @@ The first SYN associated with the scanning activity was:
 | **Source** | `192.168.1.212` |
 | **Destination** | `192.168.1.102` |
 | **Timestamp** | `Feb 2, 2024 07:30:36.410417000 MST` |
+
+![PCAP-PortScan-Analysis](first-syn-filter.png)
+
+
+![PCAP-PortScan-Analysis](first-syn-arrival-time.png)
 
 ---
 
@@ -106,13 +108,14 @@ To identify hosts responding positively to RDP connection attempts, I filtered f
 ```wireshark
 tcp.srcport == 3389 && tcp.flags.syn == 1 && tcp.flags.ack == 1
 ```
-
 Two hosts responded with SYN-ACK packets from TCP/3389:
 
 - `192.168.1.102`
 - `192.168.1.104`
 
 This indicates that **RDP was accessible on both systems at the time of the capture**.
+
+![PCAP-PortScan-Analysis](SYNACK.png)
 
 ---
 
