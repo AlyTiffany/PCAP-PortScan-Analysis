@@ -26,7 +26,7 @@ The objectives of the investigation were to:
 
 ### Identifying the Scanning Host
 
-![PCAP-PortScan-Analysis](images/IP-Packet.png)
+![PCAP-PortScan-Analysis](IP-Packet.png)
 
 Analysis of the packet capture identified the following host as the source of the scanning activity:
 
