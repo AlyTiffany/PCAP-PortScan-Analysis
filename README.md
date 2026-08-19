@@ -26,7 +26,7 @@ The objectives of the investigation were to:
 
 ### Identifying the Scanning Host
 
-![Wireshark SYN Scan Traffic](images/IP-Packet.png)
+![PCAP-PortScan-Analysis](images/IP-Packet.png)
 
 Analysis of the packet capture identified the following host as the source of the scanning activity:
 
