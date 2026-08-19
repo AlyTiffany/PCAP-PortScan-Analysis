@@ -26,6 +26,8 @@ The objectives of the investigation were to:
 
 ### Identifying the Scanning Host
 
+![Wireshark SYN Scan Traffic](images/IP-Packet.png)
+
 Analysis of the packet capture identified the following host as the source of the scanning activity:
 
 **Scanning Host:** `192.168.1.212`
